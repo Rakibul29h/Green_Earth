@@ -1,12 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
-    
-</head>
-<body>
-    
-</body>
+
+    <!-- stylesheet of css -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <!-- daisi ui and tailwind css added -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="inter ">
+    <!-- header section -->
+    <header class="max-w-[1920px] mx-auto mb-16">
+      <!-- nav section  -->
+      <section class="bg-[#15803d] w-full">
+        <div class="navbar text-white max-w-[1650px] mx-auto">
+          <div class="navbar-start max-w-[1650px] mx-auto">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-green-700 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li><a href="">About</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Plant & Tree</a></li>
+              </ul>
+            </div>
+            <a class="text-xl font-bold">Green Earth</a>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 space-x-3">
+              <li><a href="">About</a></li>
+              <li><a href="">Gallery</a></li>
+              <li><a href="">Plant & Tree</a></li>
+            </ul>
+          </div>
+          <div class="navbar-end">
+            <!-- <a class="btn bg-[#facc15] rounded-full text-[#15803d] font-semibold">Plant a Tree</a> -->
+            <button class="btn rounded-full btn-warning">Plant a Tree</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- banner section -->
+      <section class="bg-[#cff0dc] flex items-center">
+        <img src="./assets/hero-leaf1.png" alt="" />
+        <div class="text-center space-y-5">
+          <h1 class="text-5xl text-black font-bold">
+            Plant a Tree, Grow a Future
+          </h1>
+          <p class="text-[#1f2937]">
+            Join our mission to plant 1 million trees and make the Earth greener
+            for future <br />
+            generations.
+          </p>
+          <button class="btn rounded-full btn-warning">Plant a Tree</button>
+        </div>
+        <img src="./assets/hero-leaf2.png" alt="" />
+      </section>
+    </header>
+
+    <!-- main section start -->
+     <main class="max-w-[1920px] mx-auto bg-[#f0fdf4]">
+        <section class="max-w-[1650px] mx-auto ">
+            <h1 class=" font-semibold text-center my-9 text-3xl">Choose Your Trees</h1>
+            <div class="grid grid-cols-6 gap-6">
+                <div>
+                    <p class="font-lg font-semibold">Categories</p>
+                </div>
+                <div class="col-span-4 grid grid-cols-3 gap-6">
+                    <div>
+                        x
+                    </div>
+                </div>
+                <div>
+                    <p class="font-lg font-semibold">Your Cart</p>
+                </div>
+            </div>
+        </section>
+     </main>
+  </body>
 </html>
