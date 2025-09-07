@@ -3,3 +3,8 @@
 .inter{
   font-family: "Inter", sans-serif;
 }
+
+.active{
+  background-color: #15803d;
+  color:white;
+}

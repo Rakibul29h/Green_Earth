@@ -7,13 +7,11 @@ const categories =  () => {
 
 const displayCatagories = (catas) => {
   const catagoriesContainer = document.getElementById("catagoriesContainer");
-  catagoriesContainer.innerHTML = ` <div>
-                                      <button class= "rounded-sm hover:text-white hover:bg-[#15803d] w-full text-left py-1 px-2 cata" onclick="loadAllTree()">All Trees</button>
-                                    </div>`;
+  catagoriesContainer.innerHTML = "";
   for (const cata of catas) {
     const createDiv = document.createElement("div");
     createDiv.innerHTML = `
-        <button class="rounded-sm hover:text-white hover:bg-[#15803d] w-full text-left py-1 px-2 cata" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
+        <button class="rounded-sm hover:text-white hover:bg-[#15803d] w-full text-left py-1 px-2 cata my-1" id="cata-${cata.id}" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
         `;
     catagoriesContainer.appendChild(createDiv);
 }
@@ -28,6 +26,9 @@ const loadAllTree=()=>{
   fetch("https://openapi.programming-hero.com/api/plants")
   .then(res=>res.json())
   .then(data=>displayAllTree(data.plants))
+ const x=document.getElementById("x")
+ x.classList.add("active")
+
 }
 
 // Display all tree function section
@@ -64,8 +65,27 @@ const loadCategoriTree=(id)=>{
   fetch(url)
   .then(res=>res.json())
   .then(data=>displayAllTree(data.plants));
+  removeActive();
+  const x=document.getElementById(`cata-${id}`)
+  x.classList.add("active");
+
 }
 
+// remove active style
 
+const removeActive=()=>{
+  const selectCategories=document.querySelectorAll(".cata")
+  for(const element of selectCategories)
+  {
+    element.classList.remove("active")
 
+    
+  }
+}
 
+const active=()=>{
+   const selectCategories=document.querySelectorAll(".cata")
+   selectCategories.addEventListener("click",(e)=>{
+    e.target.classList.add("active");
+   })
+}
