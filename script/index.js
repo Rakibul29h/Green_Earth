@@ -43,7 +43,7 @@ const displayAllTree=(trees)=>{
                <div class="bg-white rounded-xl   p-4 space-y-4 h-full shadow-sm">
                 <img class="rounded-lg w-full h-[300px] object-cover" src="${tree.image}" alt="" >
                 <div class="space-y-3">
-                  <p class="font-semibold">${tree.name}</p>
+                  <p class="font-semibold" onclick="details(${tree.id})">${tree.name}</p>
                   <p class="h-[70px] text-ellipsis overflow-hidden ">${tree.description}</p>
                   <div class="flex justify-between">
                     <p class="bg-[#DCFCE7] text-[#15803D] px-4 py-1 rounded-full">${tree.category}</p>
@@ -57,6 +57,35 @@ const displayAllTree=(trees)=>{
   }
 }
 
+// details all section
+
+const details=(id)=>{
+  let url=`https://openapi.programming-hero.com/api/plant/${id}`
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=>showDetails(data.plants));
+}
+// showDetails
+const showDetails=(details)=>
+{
+  const modal=document.getElementById("modalId")
+  const modalContent=document.getElementById("modalContent");
+  modalContent.innerHTML=`
+      <h2 class="font-bold text-2xl">${details.name}</h2>
+    <img src="${details.image}" alt="" class="rounded-lg w-full h-[250px] object-cover " >
+    <p class="text-lg"><span class="font-semibold">Category:</span>${details.category}</p>
+    <p class="text-lg"><span class="font-semibold">Price:</span><i class="fa-solid fa-bangladeshi-taka-sign"></i>${details.price}</p>
+    <p class="text-lg"><span class="font-semibold">Description:</span>${details.description}</p>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  `;
+  modal.showModal();
+}
 loadAllTree();
 // load categoriTree function section
 
