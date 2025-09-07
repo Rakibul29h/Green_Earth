@@ -40,22 +40,87 @@ const displayAllTree=(trees)=>{
   {
     const createDiv=document.createElement("div");
     createDiv.innerHTML=`
-               <div class="bg-white rounded-xl   p-4 space-y-4 h-full shadow-sm">
+               <div class="bg-white rounded-xl   p-4 space-y-4 h-[560px] shadow-sm">
                 <img class="rounded-lg w-full h-[300px] object-cover" src="${tree.image}" alt="" >
                 <div class="space-y-3">
                   <p class="font-semibold" onclick="details(${tree.id})">${tree.name}</p>
                   <p class="h-[70px] text-ellipsis overflow-hidden ">${tree.description}</p>
                   <div class="flex justify-between">
                     <p class="bg-[#DCFCE7] text-[#15803D] px-4 py-1 rounded-full">${tree.category}</p>
-                    <p class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</p>
+                    <p class="font-semibold">৳${tree.price}</p>
                   </div>
-                 <button class= "rounded-full text-white bg-[#15803d] w-full text-center py-3 ">Add to Cart</button>
+                 <button class= "rounded-full text-white bg-[#15803d] w-full text-center py-3 " onclick="addCart('${tree.name}',${tree.price})">Add to Cart</button>
                 </div>
               </div>
     `
     treeContainer.appendChild(createDiv);
   }
 }
+
+const cartsData=[]
+// add to cart section
+const addCart=(name,price)=>{
+ let cartData={
+  name:name,
+  price:price
+ }
+ cartsData.push(cartData)
+ alert(`${name} has been added to the cart`)
+ showCarts();
+  totalPrice();
+}
+// show carts section
+const showCarts=()=>{
+   let cartsContainer=document.getElementById("cartsContainer")
+ cartsContainer.innerHTML="";
+ let id=1;
+ for(const singleCart of cartsData)
+ {
+    const createDiv=document.createElement("div");
+    createDiv.innerHTML=`
+    <div class="bg-[#F0FDF4] rounded-sm my-1 p-3 flex items-center justify-between" id="${id}">
+                  <div>
+                    <p class="font-bold">${singleCart.name}</p>
+                    <p class="">৳${singleCart.price}</p>
+                  </div>
+                  <div>
+                    <i onclick="removeCart(${id})" class="fa-solid fa-xmark"></i>
+                  </div>
+                </div>
+    `
+    id++;
+    cartsContainer.appendChild(createDiv);
+  }
+}
+// total Price
+const totalPrice=()=>{
+  let sum=0;
+  for(const cart of cartsData)
+  {
+    sum+=cart.price;
+  }
+  let cartsContainer=document.getElementById("cartsContainer")
+  if(sum==0)
+  {
+    cartsContainer.innerHTML="";
+  }else{
+      const divContent=document.createElement("div");
+     divContent.innerHTML=`     
+     <div class="mt-2 text-right border-t-2 border-gray-300">
+                <p>total: ${sum}</p>
+              </div>`
+    cartsContainer.appendChild(divContent);
+  }
+
+}
+
+// remove from cart
+const removeCart=(id)=>{
+  cartsData.splice(id-1,1);
+  showCarts();
+  totalPrice();
+}
+
 
 // details all section
 
@@ -74,7 +139,7 @@ const showDetails=(details)=>
       <h2 class="font-bold text-2xl">${details.name}</h2>
     <img src="${details.image}" alt="" class="rounded-lg w-full h-[250px] object-cover " >
     <p class="text-lg"><span class="font-semibold">Category:</span>${details.category}</p>
-    <p class="text-lg"><span class="font-semibold">Price:</span><i class="fa-solid fa-bangladeshi-taka-sign"></i>${details.price}</p>
+    <p class="text-lg"><span class="font-semibold">Price:</span>৳${details.price}</p>
     <p class="text-lg"><span class="font-semibold">Description:</span>${details.description}</p>
 
     <div class="modal-action">
