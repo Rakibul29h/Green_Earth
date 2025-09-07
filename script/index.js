@@ -11,21 +11,36 @@ const displayCatagories = (catas) => {
   for (const cata of catas) {
     const createDiv = document.createElement("div");
     createDiv.innerHTML = `
-        <button class="rounded-sm hover:text-white hover:bg-[#15803d] w-full text-left py-1 px-2 cata my-1" id="cata-${cata.id}" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
+        <button class="rounded-sm hover:text-white hover:bg-[#13c052] w-full text-left py-1 px-2 cata my-1" id="cata-${cata.id}" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
         `;
     catagoriesContainer.appendChild(createDiv);
 }
-
 };
 
 categories();
 
+const loader=(value)=>
+{
+  const loader=document.getElementById("loader");
+  const treeSection=document.getElementById("treeSection");
+  if(value==true)
+  {
+    loader.classList.remove("hidden")
+    treeSection.classList.add("hidden")
+  }else{
+    loader.classList.add("hidden")
+    treeSection.classList.remove("hidden");
+  }
+}
+
 
 // Load all tree
-const loadAllTree=()=>{
-  fetch("https://openapi.programming-hero.com/api/plants")
-  .then(res=>res.json())
-  .then(data=>displayAllTree(data.plants))
+const loadAllTree=async ()=>{
+  loader(true)
+  const res= await fetch("https://openapi.programming-hero.com/api/plants")
+ const data=await res.json()
+ displayAllTree(data.plants)
+ loader(false)
  const x=document.getElementById("x")
  x.classList.add("active")
 
@@ -34,6 +49,7 @@ const loadAllTree=()=>{
 // Display all tree function section
 
 const displayAllTree=(trees)=>{
+  
   const treeContainer=document.getElementById("cardContainer");
   treeContainer.innerHTML="";
   for(const tree of trees)
@@ -55,6 +71,7 @@ const displayAllTree=(trees)=>{
     `
     treeContainer.appendChild(createDiv);
   }
+  
 }
 
 const cartsData=[]
@@ -154,12 +171,14 @@ const showDetails=(details)=>
 loadAllTree();
 // load categoriTree function section
 
-const loadCategoriTree=(id)=>{
+const loadCategoriTree= async (id)=>{
+  loader(true);
   const url=`https://openapi.programming-hero.com/api/category/${id}`
-  fetch(url)
-  .then(res=>res.json())
-  .then(data=>displayAllTree(data.plants));
+  const res=await fetch(url)
+  const data=await res.json();
+  displayAllTree(data.plants)
   removeActive();
+  loader(false)
   const x=document.getElementById(`cata-${id}`)
   x.classList.add("active");
 

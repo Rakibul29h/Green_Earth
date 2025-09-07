@@ -93,6 +93,10 @@
     <!-- main section start -->
     <main class="max-w-[1920px] mx-auto bg-[#f0fdf4] pt-24">
       <section class="max-w-[1650px] mx-auto">
+        <div class="text-center hidden" id="loader">
+          <span class="loading loading-dots loading-lg"></span>
+        </div>
+        <div id="treeSection">
         <h1 class="font-semibold text-center my-9 text-3xl">
           Choose Your Trees
         </h1>
@@ -101,7 +105,7 @@
             <p class="font-lg font-semibold mb-3 px-2">Categories</p>
             <div>
               <button
-                class="rounded-sm hover:text-white hover:bg-[#15803d] w-full text-left py-1 px-2 cata my-1"
+                class="rounded-sm hover:text-white hover:bg-[#13c052] w-full text-left py-1 px-2 cata my-1"
                 id="x"
                 onclick="loadAllTree()"
               >
@@ -129,6 +133,7 @@
         <dialog id="modalId" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box space-y-3" id="modalContent"></div>
         </dialog>
+        </div>
       </section>
     </main>
 
