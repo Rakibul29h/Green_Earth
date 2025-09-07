@@ -60,6 +60,12 @@ loadAllTree();
 // load categoriTree function section
 
 const loadCategoriTree=(id)=>{
-  const url=``
+  const url=`https://openapi.programming-hero.com/api/category/${id}`
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=>displayAllTree(data.plants));
 }
+
+
+
 
