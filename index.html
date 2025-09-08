@@ -100,30 +100,34 @@
         <div class="text-center hidden" id="loader">
           <span class="loading loading-dots loading-lg"></span>
         </div>
-        <div id="treeSection">
+        <div id="treeSection" class="w-full">
         <h1 class="font-semibold text-center my-9 text-3xl">
           Choose Your Trees
         </h1>
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-          <div id="mainCata">
+        <div class="flex justify-center mb-3 md:hidden">
+          <button class="btn" onclick="catagorySm()">Categories</button>
+          <button class="btn" onclick="cartSm()">Your Cart</button>
+        </div>
+        <div class="flex flex-col justify-center md:items-start md:grid md:grid-cols-6 gap-6">
+          <div id="mainCata" class=" order-1 text-center w-full hidden sm:block">
             <p class="font-lg font-semibold mb-3 px-2">Categories</p>
-            <div>
+            <div class="text-center md:text-left">
               <button
-                class="rounded-sm hover:text-white hover:bg-[#13c052] w-full text-left py-1 px-2 cata my-1"
+                class="rounded-sm  w-[90%] mx-auto md:w-full hover:text-white hover:bg-[#13c052]  text-center md:text-left py-1 px-2 cata my-1"
                 id="x"
                 onclick="loadAllTree()"
               >
                 All Trees
               </button>
             </div>
-            <div id="catagoriesContainer"></div>
+            <div id="catagoriesContainer" class="text-center md:text-left md:w-full"></div>
           </div>
           <div
-            class="col-span-4 grid grid-cols-1 md:grid-cols-3 gap-6"
+            class="col-span-4 order-3 md:order-2 grid grid-cols-1 md:grid-cols-3 gap-6"
             id="cardContainer"
           ></div>
 
-          <div class="bg-white px-2 py-3 rounded-lg">
+          <div class="bg-white px-2 py-3 rounded-lg order-2 hidden w-full md:block md:order-3" id="yourCart">
             <p class="font-lg font-semibold">Your Cart</p>
             <div id="cartsContainer">
 

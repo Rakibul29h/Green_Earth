@@ -11,7 +11,7 @@ const displayCatagories = (catas) => {
   for (const cata of catas) {
     const createDiv = document.createElement("div");
     createDiv.innerHTML = `
-        <button class="rounded-sm hover:text-white hover:bg-[#13c052] w-full text-left py-1 px-2 cata my-1" id="cata-${cata.id}" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
+        <button class="rounded-sm hover:text-white hover:bg-[#13c052] w-[90%] mx-auto md:w-full text-center md:text-left py-1 px-2 cata my-1" id="cata-${cata.id}" onclick="loadCategoriTree(${cata.id})">${cata.category_name}</button>
         `;
     catagoriesContainer.appendChild(createDiv);
 }
@@ -201,4 +201,20 @@ const active=()=>{
    selectCategories.addEventListener("click",(e)=>{
     e.target.classList.add("active");
    })
+}
+
+
+const catagorySm=()=>{
+  const catagory=document.getElementById("mainCata");
+  const cart=document.getElementById("yourCart");
+  cart.classList.add("hidden");
+  catagory.classList.toggle("hidden");
+
+}
+const cartSm=()=>{
+  const catagory=document.getElementById("mainCata");
+  const cart=document.getElementById("yourCart");
+  catagory.classList.add("hidden");
+  cart.classList.toggle("hidden");
+
 }
