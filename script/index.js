@@ -60,7 +60,7 @@ const displayAllTree=(trees)=>{
                 <img class="rounded-lg w-full h-[300px] object-cover" src="${tree.image}" alt="" >
                 <div class="space-y-3">
                   <p class="font-semibold" onclick="details(${tree.id})">${tree.name}</p>
-                  <p class="h-[70px] text-ellipsis overflow-hidden ">${tree.description}</p>
+                  <p class="line-clamp-3 ">${tree.description}</p>
                   <div class="flex justify-between">
                     <p class="bg-[#DCFCE7] text-[#15803D] px-4 py-1 rounded-full">${tree.category}</p>
                     <p class="font-semibold">৳${tree.price}</p>
